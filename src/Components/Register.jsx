@@ -9,9 +9,8 @@ function Register() {
     const [instaId, setinstaId] = useState()
     const register=async(e)=>{
         e.preventDefault();
-        const apiUrl = process.env.URL;
         try {
-            const response=await axios.post(`${apiUrl}register`,
+            const response=await axios.post("https://backendprojectnew.onrender.com/api/auth/register",
                 {
                     name,email,instaId,content,password,age
                 }

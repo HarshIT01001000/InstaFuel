@@ -9,16 +9,15 @@ function Login() {
 
   const login = async (e) => {
     e.preventDefault(); // Prevent page reload
-     const apiUrl = import.meta.env.URL;
     try {
       const response = await axios.post(
-        `${apiUrl}login`,
+        "https://backendprojectnew.onrender.com/api/auth/login",
         {
           email,
           password,
         }
       );  
-
+console.log("API URL:", apiUrl); 
       // Save token to localStorage
       localStorage.setItem("token", response.data.token);
       console.log("Login successful:", response.data);
