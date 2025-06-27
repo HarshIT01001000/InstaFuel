@@ -1,31 +1,52 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import * as yup from "yup";
 
+// ✅ Yup validation schema
+const loginSchema = yup.object().shape({
+  email: yup.string().email("Invalid email").required("Email is required"),
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+});
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   const login = async (e) => {
-    e.preventDefault(); // Prevent page reload
+    e.preventDefault();
+
     try {
+      // ✅ Validate form input using Yup
+      await loginSchema.validate({ email, password }, { abortEarly: false });
+      setErrors({}); // clear previous errors
+
       const response = await axios.post(
         "https://backendprojectnew.onrender.com/api/auth/login",
         {
           email,
           password,
         }
-      );  
-      // Save token to localStorage
+      );
+
       localStorage.setItem("token", response.data.token);
       console.log("Login successful:", response.data);
-
-      // Navigate to home or dashboard
-      navigate("/Home"); // Change as per your route
-    } catch (error) {
-      console.error("Login failed:", error);
+      navigate("/Home"); // redirect after login
+    } catch (err) {
+      if (err.name === "ValidationError") {
+        const validationErrors = {};
+        err.inner.forEach((e) => {
+          validationErrors[e.path] = e.message;
+        });
+        setErrors(validationErrors);
+      } else {
+        console.error("Login failed:", err);
+      }
     }
   };
 
@@ -43,32 +64,38 @@ function Login() {
         </h2>
 
         <form onSubmit={login} className="space-y-6">
+          {/* Email Field */}
           <div>
             <label className="block text-sm font-medium text-white/80 mb-1">
               Email address
             </label>
             <input
               type="email"
-              required
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 placeholder-white/70 text-white backdrop-blur focus:outline-none focus:ring-2 focus:ring-white/50 transition"
             />
+            {errors.email && (
+              <p className="text-red-400 text-sm mt-1">{errors.email}</p>
+            )}
           </div>
 
+          {/* Password Field */}
           <div>
             <label className="block text-sm font-medium text-white/80 mb-1">
               Password
             </label>
             <input
               type="password"
-              required
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 placeholder-white/70 text-white backdrop-blur focus:outline-none focus:ring-2 focus:ring-white/50 transition"
             />
+            {errors.password && (
+              <p className="text-red-400 text-sm mt-1">{errors.password}</p>
+            )}
           </div>
 
           <button
