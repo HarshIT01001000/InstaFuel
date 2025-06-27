@@ -35,7 +35,7 @@ function Hero() {
       <div className="p-6 bg-white rounded-xl shadow-lg max-w-6xl mx-auto mt-16 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Reel Idea Generator */}
-          <div className="group bg-gradient-to-r from-blue-600 to-cyan-500 text-white p-6 rounded-2xl shadow-md transform transition duration-300 hover:scale-[1.02] hover:shadow-2xl">
+          <div className="group bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-6 rounded-2xl shadow-md transform transition duration-300 hover:scale-[1.02] hover:shadow-2xl">
             <div className="flex items-center gap-4 mb-4 transition-all duration-300 group-hover:translate-x-1">
               <div className="bg-white rounded-full p-3 group-hover:scale-110 transition-transform">
                 <img

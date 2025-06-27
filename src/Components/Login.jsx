@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,16 +18,14 @@ function Login() {
           password,
         }
       );  
-console.log("API URL:", apiUrl); 
       // Save token to localStorage
       localStorage.setItem("token", response.data.token);
       console.log("Login successful:", response.data);
 
       // Navigate to home or dashboard
-      navigate("/dashboard"); // Change as per your route
+      navigate("/Home"); // Change as per your route
     } catch (error) {
       console.error("Login failed:", error);
-      alert("Invalid credentials or server error.");
     }
   };
 

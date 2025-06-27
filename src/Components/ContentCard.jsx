@@ -2,57 +2,53 @@ import { useState } from "react";
 
 function ContentCard() {
   const podcasts = [
-    {
-      title: "Fashion Content",
-      image:
-        "https://podcast.adobe.com/images/responsive/wp_flex_crime-template-cover@2x-608.b9f5ea0ceed83530.webp?responsive",
-      prompts: [
-        "Top 5 Summer Outfits",
-        "OOTD transitions for Reels",
-        "Behind the scenes of a photoshoot",
-      ],
-    },
-    {
-      title: "Travel Content",
-      image:
-        "https://podcast.adobe.com/images/responsive/wp_flex_analysis-template-cover@2x-609.8baee2dd1996ffd0.webp?responsive",
-      prompts: [
-        "Day in My Travel Bag",
-        "Hidden Gems in [Location]",
-        "Before vs After Travel Glow",
-      ],
-    },
-    {
-      title: "Daily Vlogs",
-      image:
-        "https://podcast.adobe.com/images/responsive/wp_flex_trend-template-cover@2x-609.99a1d573a6883096.webp?responsive",
-      prompts: [
-        "My Realistic Morning Routine",
-        "Unfiltered Day in My Life",
-        "Things I’m Grateful for Today",
-      ],
-    },
-    {
-      title: "Educational Content",
-      image:
-        "https://podcast.adobe.com/images/responsive/wp_flex_analysis-template-cover@2x-609.8baee2dd1996ffd0.webp?responsive",
-      prompts: [
-        "3 Tips to Learn Faster",
-        "Explain a Complex Topic Simply",
-        "My Study Setup Breakdown",
-      ],
-    },
-    {
-      title: "Fitness Content",
-      image:
-        "https://podcast.adobe.com/images/responsive/wp_flex_crime-template-cover@2x-608.b9f5ea0ceed83530.webp?responsive",
-      prompts: [
-        "My Full-Body Routine",
-        "What I Eat in a Day – Fitness Edition",
-        "Transformation Progress Reel",
-      ],
-    },
-  ];
+  {
+    title: "Fashion Content",
+    image: "https://storyset.com/images/illustrations/shopping-rafiki.svg",
+    prompts: [
+      "Top 5 Summer Outfits",
+      "OOTD transitions for Reels",
+      "Behind the scenes of a photoshoot",
+    ],
+  },
+  {
+    title: "Travel Content",
+    image: "https://storyset.com/images/illustrations/traveling-rafiki.svg",
+    prompts: [
+      "Day in My Travel Bag",
+      "Hidden Gems in [Location]",
+      "Before vs After Travel Glow",
+    ],
+  },
+  {
+    title: "Daily Vlogs",
+    image: "https://storyset.com/images/illustrations/video-creator-rafiki.svg",
+    prompts: [
+      "My Realistic Morning Routine",
+      "Unfiltered Day in My Life",
+      "Things I’m Grateful for Today",
+    ],
+  },
+  {
+    title: "Educational Content",
+    image: "https://storyset.com/images/illustrations/online-learning-rafiki.svg",
+    prompts: [
+      "3 Tips to Learn Faster",
+      "Explain a Complex Topic Simply",
+      "My Study Setup Breakdown",
+    ],
+  },
+  {
+    title: "Fitness Content",
+    image: "https://storyset.com/images/illustrations/fitness-rafiki.svg",
+    prompts: [
+      "My Full-Body Routine",
+      "What I Eat in a Day – Fitness Edition",
+      "Transformation Progress Reel",
+    ],
+  },
+];
+
 
   const [activeIndex, setActiveIndex] = useState(null);
 
